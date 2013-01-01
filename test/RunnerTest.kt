@@ -1,14 +1,8 @@
 package com.taroid.brainfxck
 
-import kotlin.test.assertEquals
-import kotlin.test.assertFalse
-import kotlin.test.assertTrue
-
-import org.junit.Test as test
 import java.io.OutputStream
-import com.sun.tools.internal.xjc.generator.annotation.spec.XmlValueWriter
-import java.io.OutputStreamWriter
-import com.sun.org.apache.regexp.internal.REProgram
+import kotlin.test.assertEquals
+import org.junit.Test as test
 
 public class RunnerTest {
 
