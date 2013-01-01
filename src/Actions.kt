@@ -93,7 +93,9 @@ private val endLoop : (Machine) -> Machine = {
     endLoop(it, if(it.memory.currentValue == 0) 0 else 1)
 }
 
-private val doNothing : (Machine) -> Machine = { it }
+private val doNothing : (Machine) -> Machine = {
+    it.copy(state = it.getNextState())
+}
 
 // TODO: type aliasがサポートされたら (Machine) -> Machine に別名を与える
 public fun getAction(code : Char) : (Machine) -> Machine = when (code) {

@@ -10,12 +10,13 @@ public class ActionTest {
 
     val machine = {
         val memory = MemoryImpl(1, listOf(1, 23, 456))
-        createMachine("").copy(memory = memory)
+        createMachine("abc").copy(memory = memory)
     }()
 
-    test fun 指定した文字に対応するアクションがない場合は何もしないアクションが取得できるはず() {
-        val action = getAction('#')
-        assertEquals(machine, action(machine))
+    test fun 指定した文字に対応するアクションがない場合はPCインクリメント以外は何もしないでアクションが取得できるはず() {
+        val result = getAction('#')(machine)
+        assertEquals('b', result.state.currentProgramCode)
+        assertEquals(machine.memory, result.memory)
     }
 
     test fun ポインタをインクリメントするはず() {
@@ -58,8 +59,7 @@ public class ActionTest {
 
         // テストのために出力先を切り替え
         val testMachine = machine.copy(outputStream = outputStream)
-        val result = getAction(OUTPUT)(testMachine)
-        assertEquals(testMachine, result)
+        getAction(OUTPUT)(testMachine)
     }
 
     val machineForLoopStart = {
