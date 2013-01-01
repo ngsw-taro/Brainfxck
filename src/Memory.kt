@@ -1,18 +1,12 @@
 package com.taroid.brainfxck
 
 public trait Memory {
-    
-    val currentValue : Int
 
-    fun incrementPointer() : Memory
+    public val currentValue : Int
 
-    fun decrementPointer() : Memory
+    public fun setValue(newValue : Int) : Memory
 
-    fun incrementValue() : Memory
+    public fun incrementPointer() : Memory
 
-    fun decrementValue() : Memory
-
-    fun input() : Memory
-
-    fun output() : Memory
+    public fun decrementPointer() : Memory
 }
