@@ -9,21 +9,21 @@ import org.junit.Test as test
 public class MachineStateImplTest {
 
     test fun 設定したプログラムを取得できるはず() {
-        assertEquals("", MachineStateImpl("", 0).program)
-        assertEquals("hoge", MachineStateImpl("hoge", 0).program)
+        assertEquals("", MachineStateImpl("").program)
+        assertEquals("hoge", MachineStateImpl("hoge").program)
         assertEquals("ほげ", MachineStateImpl("ほげ", 2).program)
     }
 
     test fun 設定したPCが指すコードを取得できるはず() {
-        assertEquals('a', MachineStateImpl("abc", 0).currentProgramCode)
+        assertEquals('a', MachineStateImpl("abc").currentProgramCode)
         assertEquals('b', MachineStateImpl("abc", 1).currentProgramCode)
         assertEquals('c', MachineStateImpl("abc", 2).currentProgramCode)
     }
 
     test fun PCをインクリメントすると次のコードを指すはず() {
-        assertEquals('b', MachineStateImpl("abc", 0).incrementProgramCounter().currentProgramCode)
+        assertEquals('b', MachineStateImpl("abc").incrementProgramCounter().currentProgramCode)
         assertEquals('c', MachineStateImpl("abc", 1).incrementProgramCounter().currentProgramCode)
-        assertEquals('c', MachineStateImpl("abc", 0).incrementProgramCounter().incrementProgramCounter().currentProgramCode)
+        assertEquals('c', MachineStateImpl("abc").incrementProgramCounter().incrementProgramCounter().currentProgramCode)
     }
 
     test fun PCをデクリメントすると前のコードを指すはず() {
@@ -33,7 +33,7 @@ public class MachineStateImplTest {
     }
 
     test fun PCの指す先がプログラムの終端であるかを適切に示すはず() {
-        assertFalse(MachineStateImpl("abc", 0).isEndOfProgram())
+        assertFalse(MachineStateImpl("abc").isEndOfProgram())
         assertFalse(MachineStateImpl("abc", 2).isEndOfProgram())
         assertTrue(MachineStateImpl("abc", 3).isEndOfProgram())
 
@@ -54,7 +54,7 @@ public class MachineStateImplTest {
 
     test(expected = javaClass<IllegalStateException>())
     fun PCが負数になってしまうようなデクリメントを行おうとすると例外を投げるはず() {
-        MachineStateImpl("abc", 0).decrementProgramCounter()
+        MachineStateImpl("abc").decrementProgramCounter()
     }
 
     test(expected = javaClass<IllegalStateException>())

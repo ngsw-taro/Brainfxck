@@ -1,6 +1,6 @@
 package com.taroid.brainfxck
 
-public trait Memory {
+public data trait Memory {
 
     public val currentValue : Int
 

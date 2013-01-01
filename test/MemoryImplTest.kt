@@ -27,7 +27,7 @@ public class MemoryImplTest {
     }
 
     test fun インクリメントによりメモリは自動的に拡張されるはず() {
-        val memory = MemoryImpl(0)
+        val memory = MemoryImpl()
         assertEquals(0, memory.incrementPointer().currentValue)
         assertEquals(0, memory.incrementPointer().incrementPointer().currentValue)
     }
@@ -61,6 +61,6 @@ public class MemoryImplTest {
 
     test(expected = javaClass<IllegalStateException>())
     fun デクリメントによりポインタが負数になる場合は例外を投げるはず() {
-        MemoryImpl(0).decrementPointer()
+        MemoryImpl().decrementPointer()
     }
 }

@@ -1,7 +1,7 @@
 package com.taroid.brainfxck
 
 internal class MachineStateImpl(override public val program : String,
-                                programCounter : Int) : MachineState {
+                                programCounter : Int = 0) : MachineState {
 
     class object {
         private val PC_OUT_OF_RANGE = "The program counter is out of range."

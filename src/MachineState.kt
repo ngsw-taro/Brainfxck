@@ -1,6 +1,6 @@
 package com.taroid.brainfxck
 
-public trait MachineState {
+public data trait MachineState {
 
     public val program : String
 

@@ -2,7 +2,7 @@ package com.taroid.brainfxck
 
 import kotlin.dom.addClass
 
-internal class MemoryImpl(pointer : Int, private val values : List<Int> = listOf(0)) : Memory {
+internal class MemoryImpl(pointer : Int = 0, private val values : List<Int> = listOf(0)) : Memory {
 
     private val pointer : Int
 
